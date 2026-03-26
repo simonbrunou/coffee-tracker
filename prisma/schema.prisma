@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id             String    @id @default(cuid())
+  name           String
+  email          String    @unique
+  hashedPassword String
+  image          String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  coffees        Coffee[]
+}
+
+model Coffee {
+  id             String   @id @default(cuid())
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  name           String
+  roaster        String?
+  origin         String?
+  variety        String?
+
+  brewMethod     String?
+  grindSize      String?
+  waterTemp      Int?
+  doseGrams      Float?
+  yieldMl        Float?
+  brewTimeSeconds Int?
+
+  rating         Int      @default(0)
+  aroma          Int?
+  acidity        Int?
+  body           Int?
+  sweetness      Int?
+  bitterness     Int?
+  flavorNotes    String?
+
+  notes          String?
+
+  userId         String
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tags           Tag[]
+
+  @@index([userId])
+  @@index([createdAt])
+}
+
+model Tag {
+  id      String   @id @default(cuid())
+  name    String   @unique
+  coffees Coffee[]
+}
