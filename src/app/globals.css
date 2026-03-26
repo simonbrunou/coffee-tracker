@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fffbf5;
+  --foreground: #171717;
+  --coffee-50: #fdf8f0;
+  --coffee-100: #f5e6d0;
+  --coffee-200: #e8c99b;
+  --coffee-300: #d4a462;
+  --coffee-400: #c4843a;
+  --coffee-500: #a96828;
+  --coffee-600: #8b5220;
+  --coffee-700: #6d3d1a;
+  --coffee-800: #4e2c15;
+  --coffee-900: #331c0e;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-coffee-50: var(--coffee-50);
+  --color-coffee-100: var(--coffee-100);
+  --color-coffee-200: var(--coffee-200);
+  --color-coffee-300: var(--coffee-300);
+  --color-coffee-400: var(--coffee-400);
+  --color-coffee-500: var(--coffee-500);
+  --color-coffee-600: var(--coffee-600);
+  --color-coffee-700: var(--coffee-700);
+  --color-coffee-800: var(--coffee-800);
+  --color-coffee-900: var(--coffee-900);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1a1209;
+    --foreground: #ededed;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
